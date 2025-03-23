@@ -71,7 +71,7 @@ public class UserServiceImpl implements UserService {
         user.setId(null);
         user.setOrders(null);
         UserEntity savedUser = userRepository.save(user);
-        return JWTUserMapper.ToDTO(savedUser);
+        return JWTUserMapper.mapToDTO(savedUser);
     }
 
     @Override

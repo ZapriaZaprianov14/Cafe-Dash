@@ -24,7 +24,7 @@ public class CustomUserDetailsServiceImpl implements UserDetailsService {
                 .orElseThrow(() -> new UsernameNotFoundException("Incorrect username or password"));
         JWTUserDTO jwtUserDTO = null;
 		try {
-			jwtUserDTO = JWTUserMapper.ToDTO(user);
+			jwtUserDTO = JWTUserMapper.mapToDTO(user);
 		} catch (DataMappingException e) {
 			e.printStackTrace();
 		}
