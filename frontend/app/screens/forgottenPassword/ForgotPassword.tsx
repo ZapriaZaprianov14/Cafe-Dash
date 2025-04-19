@@ -36,11 +36,11 @@ const ForgotPassword = () => {
       style={styles.container}
       behavior={Platform.OS === "ios" ? "padding" : undefined}
     >
-      <CommonHeader title="Edit User" />
+      <CommonHeader title="Forgotten Password" />
       <ScrollView contentContainerStyle={styles.scrollContainer}>
         <View style={styles.innerContainer}>
           <Text style={styles.title}>Forgot Your Password?</Text>
-
+          <Text>Enter your email</Text>
           <TextInput
             label="Email"
             value={email}

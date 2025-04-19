@@ -41,7 +41,7 @@ export default StyleSheet.create({
     color: "#774936",
     },
   button: {
-    width: theme.components.login.buttonWidth,
+    width: theme.components.login.inputWidth,
     backgroundColor: theme.colors.primary,
     marginTop: theme.spacing.md,
     borderRadius: 6,

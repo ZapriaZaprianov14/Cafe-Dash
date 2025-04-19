@@ -41,12 +41,12 @@ export default StyleSheet.create({
     color: "#774936",
   },
   button: {
-    width: theme.components.login.buttonWidth,
+    width: theme.components.login.inputWidth,
     backgroundColor: theme.colors.primary,
     marginTop: theme.spacing.md,
   },
   secondaryButton: {
-    width: theme.components.login.buttonWidth,
+    width: theme.components.login.inputWidth,
     marginTop: theme.spacing.sm,
     borderColor: theme.colors.primary,
   },
