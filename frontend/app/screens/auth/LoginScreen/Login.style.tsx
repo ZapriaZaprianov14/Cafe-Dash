@@ -48,6 +48,9 @@ export default StyleSheet.create({
         backgroundColor: theme.colors.secondary,
         borderColor: theme.colors.primary,
     },
+    registerButtonLabel: {
+        color: theme.colors.primary,
+      },
     loginButton: {
         marginTop: theme.spacing.xl,
         width: theme.components.login.buttonWidth,
@@ -55,6 +58,7 @@ export default StyleSheet.create({
     },
     registerButton: {
         marginTop: theme.spacing.sm,
+        color: theme.colors.textPrimary,
         width: theme.components.login.buttonWidth,
         borderColor: theme.colors.primary,
         borderWidth: theme.spacing.xs / 2,

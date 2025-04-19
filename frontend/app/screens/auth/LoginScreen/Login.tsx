@@ -112,9 +112,13 @@ const Login = () => {
               mode="contained"
               onPress={() => navigation.navigate("register")}
               style={styles.registerButton}
+              labelStyle={styles.registerButtonLabel}
             >
               Sign Up
             </Button>
+            <TouchableOpacity onPress={() => navigation.navigate("forgotpassword")}>
+              <Text>Forgot Password?</Text>
+            </TouchableOpacity>
           </View>
         </ScrollView>
       </KeyboardAvoidingView>

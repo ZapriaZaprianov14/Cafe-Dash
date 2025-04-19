@@ -1,7 +1,6 @@
 package com.cafe.backend.service.impl;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 
@@ -9,21 +8,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.cafe.backend.dto.JWTUserDTO;
-import com.cafe.backend.dto.OrderDTO;
 import com.cafe.backend.dto.RegisterUserDTO;
-import com.cafe.backend.dto.ReviewDTO;
-import com.cafe.backend.dto.RoleDTO;
 import com.cafe.backend.dto.UpdateUserDTO;
 import com.cafe.backend.dto.UserDTO;
 import com.cafe.backend.entity.account.UserEntity;
 import com.cafe.backend.entity.mapper.JWTUserMapper;
-import com.cafe.backend.entity.mapper.OrderMapper;
 import com.cafe.backend.entity.mapper.RegisterUserMapper;
-import com.cafe.backend.entity.mapper.ReviewMapper;
-import com.cafe.backend.entity.mapper.RoleMapper;
 import com.cafe.backend.entity.mapper.UserMapper;
-import com.cafe.backend.entity.order.OrderEntity;
-import com.cafe.backend.entity.review.ReviewEntity;
 import com.cafe.backend.entity.role.RoleEntity;
 import com.cafe.backend.exception.BadRequestException;
 import com.cafe.backend.exception.DataMappingException;
@@ -89,6 +80,15 @@ public class UserServiceImpl implements UserService {
     }
     
     @Override
+    public UserEntity getUserByEmail(String email) throws BadRequestException, NotFoundException {
+       Optional<UserEntity> user = userRepository.findByEmailAndIsDeletedFalse(email);
+        if(user.isEmpty()) {
+        	return null;
+        }
+        return user.get();
+    }
+    
+    @Override
     public List<UserDTO> getAllUsers() throws BadRequestException, NotFoundException{
     	List<UserEntity> userEntities = userRepository.findAllByIsDeletedFalse();
     	if(userEntities.isEmpty()) {
@@ -143,21 +143,5 @@ public class UserServiceImpl implements UserService {
         	roleEntities.add(roleEntity);
         }
         return roleEntities;
-    }
-
-    private List<OrderEntity> getOrderEntities(UserDTO newUserDTO) throws DataMappingException {
-        List<OrderEntity> orderEntities = new LinkedList<>();
-        for (OrderDTO order : newUserDTO.orders()) {
-            orderEntities.add(OrderMapper.mapToEntity(order));
-        }
-        return orderEntities;
-    }
-
-    private List<ReviewEntity> getReviewsEntities(UserDTO newUserDTO) throws DataMappingException {
-        List<ReviewEntity> reviewEntities = new ArrayList<>();
-        for (ReviewDTO reviewDTO : newUserDTO.reviews()) {
-            reviewEntities.add(ReviewMapper.mapToEntity(reviewDTO));
-        }
-        return reviewEntities;
     }
 }
